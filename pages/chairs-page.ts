@@ -33,7 +33,6 @@ export class ChairsPage {
     }
 
     async mulitChair(){
-
         await this.c01.click();
         await expect(this.page).toHaveURL('https://shopist.io/department/chairs/product/1');
         await this.page.waitForTimeout(2000);
