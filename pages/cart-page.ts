@@ -35,6 +35,7 @@ export class CartPage{
         let totalExpected: number | null = null;
         if (orderValue !== null && tax !== null && shipping !== null) totalExpected = orderValue + tax + shipping;
         
+        //print console to verify what output given
         console.log('Order Value:', orderValue);
         console.log('Tax:', tax);
         console.log('Shipping:', shipping);
