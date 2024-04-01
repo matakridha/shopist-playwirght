@@ -4,7 +4,7 @@ import { profilePage } from '../pages/profile-page';
 
 const URL = 'https://shopist.io';
 
-test.describe.only('Profile page smoke',() => {
+test.describe.only('Positive - Profile page smoke',() => {
     test.beforeEach(async ({page}) => {
         const homePage = new HomePage(page);
         test.setTimeout(120000);
@@ -12,8 +12,16 @@ test.describe.only('Profile page smoke',() => {
         await homePage.gotoProfile();
     })
     
-    test ('Positive - Edit with valid credential', async ({page}) =>{
+    test ('Edit with valid credential', async ({page}) =>{
         const ProfilePage = new profilePage(page);
         await ProfilePage.editProfile();
+        await ProfilePage.verifySuccess();
+
+        await ProfilePage.injectJpg();
+        await ProfilePage.verifySuccess();
     })
+})
+
+test.describe.only('Negative - Profile page smoke',() => {
+
 })

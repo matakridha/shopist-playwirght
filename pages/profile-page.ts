@@ -18,6 +18,7 @@ export class profilePage{
     readonly btnSave: Locator;
     readonly btnCancel: Locator;
     readonly inputUpload: Locator;
+    readonly txtSuccess: Locator;
 
     constructor(page: Page){
         this.page = page;
@@ -33,6 +34,7 @@ export class profilePage{
         this.btnSave = page.locator('button[data-v-375d6de9].button.big.inverted');
         this.btnCancel = page.locator('button[data-v-375d6de9].button.big:has-text("Cancel")');
         this.inputUpload = page.locator('input[data-v-597d9883][type="file"]');
+        this.txtSuccess = page.locator('div.success.banner');
     }
 
     async editProfile(){
@@ -53,5 +55,20 @@ export class profilePage{
         this.inputZip.type(phoneNo);
 
         this.btnSave.click();
+    }
+
+    async injectJpg(){
+        const file = await this.inputUpload;
+        const filePath = 'path';
+    //inject file
+        this.btnEdit.click();
+        await file.setInputFiles(filePath);
+
+        this.btnSave.click();
+    }
+
+    async verifySuccess(){
+        const bannerText = await this.txtSuccess.innerText();
+        expect(bannerText).toContain('Profile successfully saved.');
     }
 }
