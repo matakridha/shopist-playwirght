@@ -13,6 +13,7 @@ test.describe.only('Profile page smoke',() => {
     })
     
     test ('Positive - Edit with valid credential', async ({page}) =>{
-        
+        const ProfilePage = new profilePage(page);
+        await ProfilePage.editProfile();
     })
 })

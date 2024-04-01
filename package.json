@@ -12,6 +12,7 @@
     "@types/node": "^20.11.30"
   },
   "dependencies": {
+    "faker": "^5.5.3",
     "playwright": "^1.42.1"
   }
 }
