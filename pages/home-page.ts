@@ -10,6 +10,7 @@ export class HomePage {
     readonly btnSofas:Locator;
     readonly btnBedding:Locator;
     readonly btnLighting:Locator;
+    readonly btnProfile:Locator;
     readonly btnCart:Locator;
 
     constructor (page:Page){
@@ -20,6 +21,7 @@ export class HomePage {
         this.btnSofas = page.locator('a.sofas');
         this.btnBedding = page.locator('a.bedding');
         this.btnLighting = page.locator('a.lighting');
+        this.btnProfile = page.locator('a.profile');
         this.btnCart = page.locator('a.cart');
     }
 
@@ -44,6 +46,23 @@ export class HomePage {
 
     async gotoChair(){
         await this.btnChairs.click();
+        await expect(this.page).toHaveURL('https://shopist.io/department/chairs')
+    }
+    async gotoSofa(){
+        await this.btnSofas.click();
+        await expect(this.page).toHaveURL('https://shopist.io/department/sofas')
+    }
+    async gotoBedding(){
+        await this.btnBedding.click();
+        await expect(this.page).toHaveURL('https://shopist.io/department/bedding')
+    }
+    async gotoLighting(){
+        await this.btnLighting.click();
+        await expect(this.page).toHaveURL('https://shopist.io/department/lighting')
+    }
+    async gotoProfile(){
+        await this.btnProfile.click();
+        await expect(this.page).toHaveURL('https://shopist.io/department/profile')
     }
 
     async verify(){

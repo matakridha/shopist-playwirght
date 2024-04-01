@@ -16,7 +16,7 @@ test.describe('Suite of Positive',() => {
         const beddingPage = new BeddingPage(page);
         const cartPage = new CartPage(page);
 
-        await homePage.gotoChair();
+        await homePage.gotoBedding();
         await beddingPage.oneSofa();
     //verify price in cart
         await homePage.btnCart.click();
@@ -33,7 +33,7 @@ test.describe('Suite of Positive',() => {
         const beddingPage = new BeddingPage(page);
         const cartPage = new CartPage(page);
 
-        await homePage.gotoChair();
+        await homePage.gotoBedding();
     //add multiple chair
         await beddingPage.mulitSofas();
         await homePage.btnCart.click();
