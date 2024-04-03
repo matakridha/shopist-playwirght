@@ -5,36 +5,29 @@ import * as faker from 'faker';
 
 export class profilePage{
     readonly page:Page;
-    readonly txtEditProfile: Locator;
-    readonly btnEdit: Locator;
-    readonly inputFirst: Locator;
-    readonly inputLast: Locator;
-    readonly inputAddress1: Locator;
-    readonly inputAddress2: Locator;
-    readonly inputAddressCity: Locator;
-    readonly search: Locator;
-    readonly inputZip: Locator;
-    readonly inputPhone: Locator;
-    readonly btnSave: Locator;
-    readonly btnCancel: Locator;
-    readonly inputUpload: Locator;
-    readonly txtSuccess: Locator;
+    readonly editForm: {
+        [key:string]: Locator;
+    }
 
     constructor(page: Page){
         this.page = page;
-        this.txtEditProfile = page.locator('//h1[text()="Edit your profile"]');
-        this.btnEdit = page.locator('a.button[href="/profile-edit"]');
-        this.inputFirst = page.locator('input[id=firstname]');
-        this.inputLast = page.locator('input[id=lastname]');
-        this.inputAddress1 = page.locator('input[id=address1]');
-        this.inputAddressCity = page.locator('input[id=addressCity]');
-        this.search = page.locator('input[type=search]');
-        this.inputZip = page.locator('input[id=addressZipcode]');
-        this.inputPhone = page.locator('input[id=phone]');
-        this.btnSave = page.locator('button[data-v-375d6de9].button.big.inverted');
-        this.btnCancel = page.locator('button[data-v-375d6de9].button.big:has-text("Cancel")');
-        this.inputUpload = page.locator('input[data-v-597d9883][type="file"]');
-        this.txtSuccess = page.locator('div.success.banner');
+
+        this.editForm = {
+            txtEditProfile : page.locator('//h1[text()="Edit your profile"]'),
+            btnEdit : page.locator('a.button[href="/profile-edit"]'),
+            inputFirst : page.locator('input[id=firstname]'),
+            inputLast : page.locator('input[id=lastname]'),
+            inputAddress1 : page.locator('input[id=address1]'),
+            inputAddressCity : page.locator('input[id=addressCity]'),
+            search : page.locator('input[type=search]'),
+            inputZip : page.locator('input[id=addressZipcode]'),
+            inputPhone : page.locator('input[id=phone]'),
+            btnSave : page.locator('button[data-v-375d6de9].button.big.inverted'),
+            btnCancel : page.locator('button[data-v-375d6de9].button.big:has-text("Cancel")'),
+            inputUpload : page.locator('input[data-v-597d9883][type="file"]'),
+            txtSuccess : page.locator('div.success.banner'),
+        };
+
     }
 
     async editProfile(){
@@ -45,30 +38,30 @@ export class profilePage{
         const zip = faker.address.zipCode();
         const phoneNo = faker.phone.phoneNumber();
 
-        this.btnEdit.click();
+        this.editForm.btnEdit.click();
         
-        this.inputFirst.type(firstName);
-        this.inputLast.type(lastName);
-        this.inputAddress1.type(address1);
-        this.inputAddressCity.type(addressCity);
-        this.inputZip.type(zip);
-        this.inputZip.type(phoneNo);
+        this.editForm.inputFirst.type(firstName);
+        this.editForm.inputLast.type(lastName);
+        this.editForm.inputAddress1.type(address1);
+        this.editForm.inputAddressCity.type(addressCity);
+        this.editForm.inputZip.type(zip);
+        this.editForm.inputZip.type(phoneNo);
 
-        this.btnSave.click();
+        this.editForm.btnSave.click();
     }
 
     async injectJpg(){
-        const file = await this.inputUpload;
+        const file = await this.editForm.inputUpload;
         const filePath = 'path';
     //inject file
-        this.btnEdit.click();
+        this.editForm.btnEdit.click();
         await file.setInputFiles(filePath);
 
-        this.btnSave.click();
+        this.editForm.btnSave.click();
     }
 
     async verifySuccess(){
-        const bannerText = await this.txtSuccess.innerText();
+        const bannerText = await this.editForm.txtSuccess.innerText();
         expect(bannerText).toContain('Profile successfully saved.');
     }
 }
