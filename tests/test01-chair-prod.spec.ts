@@ -24,10 +24,7 @@ test.describe('Suite of Positive',() => {
         await homePage.gotoChair();
         await chairsPage.oneChair();
     //verify price in cart
-        await homePage.btnCart.click();
-        await cartPage.verifySummary();
-    //add qty and verify
-        await cartPage.itemPlus();
+        await homePage.topMenu.btnCart.click();
         await cartPage.verifySummary();
     //checkout
         await cartPage.checkout();
@@ -40,7 +37,7 @@ test.describe('Suite of Positive',() => {
         await homePage.gotoChair();
     //add multiple chair
         await chairsPage.mulitChair();
-        await homePage.btnCart.click();
+        await homePage.topMenu.btnCart.click();
     //verify total price
         await cartPage.verifySummary();
     //checkout

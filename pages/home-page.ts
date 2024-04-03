@@ -5,24 +5,37 @@ export class HomePage {
     readonly page:Page;
     readonly txtTitle:Locator;
 
+    readonly topMenu: {
+        [key: string]: Locator;
+    }
+
     //topmenu
-    readonly btnChairs:Locator;
+   /* readonly btnChairs:Locator;
     readonly btnSofas:Locator;
     readonly btnBedding:Locator;
     readonly btnLighting:Locator;
     readonly btnProfile:Locator;
-    readonly btnCart:Locator;
+    readonly btnCart:Locator; */
 
     constructor (page:Page){
         this.page = page;
         this.txtTitle = page.locator('//div[@class="jumbotron-box"]/div[text()="Your Guestroom Furniture on a Budget"]');
         //topmenu
+        this.topMenu = {
+            btnChairs : page.locator('a.chairs'),
+            btnSofas : page.locator('a.sofas'),
+            btnBedding : page.locator('a.bedding'),
+            btnLighting : page.locator('a.lighting'),
+            btnProfile : page.locator('a.profile'),
+            btnCart : page.locator('a.cart'),
+        };
+        /*
         this.btnChairs = page.locator('a.chairs');
         this.btnSofas = page.locator('a.sofas');
         this.btnBedding = page.locator('a.bedding');
         this.btnLighting = page.locator('a.lighting');
         this.btnProfile = page.locator('a.profile');
-        this.btnCart = page.locator('a.cart');
+        this.btnCart = page.locator('a.cart'); */
     }
 
     async allMenuPage(){
@@ -45,23 +58,23 @@ export class HomePage {
     }
 
     async gotoChair(){
-        await this.btnChairs.click();
+        await this.topMenu.btnChairs.click();
         await expect(this.page).toHaveURL('https://shopist.io/department/chairs')
     }
     async gotoSofa(){
-        await this.btnSofas.click();
+        await this.topMenu.btnSofas.click();
         await expect(this.page).toHaveURL('https://shopist.io/department/sofas')
     }
     async gotoBedding(){
-        await this.btnBedding.click();
+        await this.topMenu.btnBedding.click();
         await expect(this.page).toHaveURL('https://shopist.io/department/bedding')
     }
     async gotoLighting(){
-        await this.btnLighting.click();
+        await this.topMenu.btnLighting.click();
         await expect(this.page).toHaveURL('https://shopist.io/department/lighting')
     }
     async gotoProfile(){
-        await this.btnProfile.click();
+        await this.topMenu.btnProfile.click();
         await expect(this.page).toHaveURL('https://shopist.io/department/profile')
     }
 
