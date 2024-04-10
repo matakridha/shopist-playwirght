@@ -19,7 +19,7 @@ export class LightingPage{
     async oneSofa(){
         const homePage = new HomePage(this.page);
         await this.c02.click();
-        await expect(this.page).toHaveURL('https://shopist.io/department/lighting/product/2');
+        await expect(this.page).toHaveURL('https://shopist.io/department/lighting/product/29');
         await this.page.waitForTimeout(2000);
 
         await this.btnPurchse.click();
@@ -30,17 +30,17 @@ export class LightingPage{
 
     async mulitSofas(){
         await this.c02.click();
-        await expect(this.page).toHaveURL('https://shopist.io/department/lighting/product/2');
+        await expect(this.page).toHaveURL('https://shopist.io/department/lighting/product/29');
         await this.page.waitForTimeout(2000);
         await this.btnPurchse.click();
         await this.page.goto('https://shopist.io/department/bedding');
         await this.c03.click();
-        await expect(this.page).toHaveURL('https://shopist.io/department/lighting/product/3');
+        await expect(this.page).toHaveURL('https://shopist.io/department/lighting/product/30');
         await this.page.waitForTimeout(2000);
         await this.btnPurchse.click();
         await this.page.goto('https://shopist.io/department/bedding');
         await this.c05.click();
-        await expect(this.page).toHaveURL('https://shopist.io/department/lighting/product/5');
+        await expect(this.page).toHaveURL('https://shopist.io/department/lighting/product/32');
         await this.page.waitForTimeout(2000);
         await this.btnPurchse.click();
 

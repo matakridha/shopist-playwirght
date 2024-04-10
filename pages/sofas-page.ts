@@ -17,7 +17,7 @@ export class SofasPage{
     async oneSofa(){
         const homePage = new HomePage(this.page);
         await this.c01.click();
-        await expect(this.page).toHaveURL('https://shopist.io/department/chairs/product/1');
+        await expect(this.page).toHaveURL('https://shopist.io/department/chairs/product/10');
         await this.page.waitForTimeout(2000);
 
         await this.btnPurchse.click();
@@ -28,12 +28,12 @@ export class SofasPage{
 
     async mulitSofas(){
         await this.c01.click();
-        await expect(this.page).toHaveURL('https://shopist.io/department/chairs/product/1');
+        await expect(this.page).toHaveURL('https://shopist.io/department/chairs/product/10');
         await this.page.waitForTimeout(2000);
         await this.btnPurchse.click();
         await this.page.goto('https://shopist.io/department/chairs');
         await this.c09.click();
-        await expect(this.page).toHaveURL('https://shopist.io/department/chairs/product/9');
+        await expect(this.page).toHaveURL('https://shopist.io/department/chairs/product/18');
         await this.page.waitForTimeout(2000);
         await this.btnPurchse.click();
 

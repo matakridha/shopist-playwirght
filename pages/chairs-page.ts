@@ -34,17 +34,17 @@ export class ChairsPage {
 
     async mulitChair(){
         await this.c01.click();
-        await expect(this.page).toHaveURL('https://shopist.io/department/chairs/product/1');
+        await expect(this.page).toHaveURL('https://shopist.io/department/chairs/product/10');
         await this.page.waitForTimeout(2000);
         await this.btnPurchse.click();
         await this.page.goto('https://shopist.io/department/chairs');
         await this.c03.click();
-        await expect(this.page).toHaveURL('https://shopist.io/department/chairs/product/3');
+        await expect(this.page).toHaveURL('https://shopist.io/department/chairs/product/12');
         await this.page.waitForTimeout(2000);
         await this.btnPurchse.click();
         await this.page.goto('https://shopist.io/department/chairs');
         await this.c08.click();
-        await expect(this.page).toHaveURL('https://shopist.io/department/chairs/product/8');
+        await expect(this.page).toHaveURL('https://shopist.io/department/chairs/product/17');
         await this.page.waitForTimeout(2000);
         await this.btnPurchse.click();
 
