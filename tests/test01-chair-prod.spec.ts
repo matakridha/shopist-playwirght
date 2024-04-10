@@ -3,13 +3,11 @@ import { HomePage } from '../pages/home-page';
 import { ChairsPage } from '../pages/chairs-page';
 import { CartPage } from '../pages/cart-page';
 
-const URL = 'https://shopist.io';
-
 
 test.describe('Suite of Positive',() => {
     test.beforeEach(async ({page}) => {
         test.setTimeout(120000);
-        await page.goto(URL);
+        await page.goto(global.BASE_URL);
     })
     test ('Verify Menu Pages', async ({page}) => {
         const homePage = new HomePage(page);

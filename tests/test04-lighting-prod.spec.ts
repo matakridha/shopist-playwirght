@@ -3,12 +3,11 @@ import { HomePage } from '../pages/home-page';
 import { LightingPage } from '../pages/lighting-page';
 import { CartPage } from '../pages/cart-page';
 
-const URL = 'https://shopist.io';
 
 test.describe('Suite of Positive',() => {
     test.beforeEach(async ({page}) => {
         test.setTimeout(120000);
-        await page.goto(URL);
+        await page.goto(global.BASE_URL);
     })
     
     test ('Checkout One Lighting', async ({page}) => {

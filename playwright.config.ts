@@ -75,3 +75,19 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
+
+Object.assign(global, {
+  BASE_URL: 'https://shopist.io',
+
+  use: {
+    trace: "on" /* Collect trace always. See https://playwright.dev/docs/trace-viewer */,
+    video: "off" /* Record Video */,
+    screenshot: "only-on-failure",
+    headless: true,
+    viewport: { width: 1900, height: 940 },
+    launchOptions: {
+      slowMo: 500,
+    },
+  },
+});
+
